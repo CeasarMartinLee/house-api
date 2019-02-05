@@ -5,6 +5,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret
 const sequelize = new Sequelize(connectionString, {define: { timestamps: false }})
 
 const port = 8080
+app.set('port', (process.env.PORT || 8080));
 app.listen(port, () => `Listening on port ${port}`)
 
 const House = sequelize.define('house', {

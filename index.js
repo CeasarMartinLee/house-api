@@ -4,9 +4,15 @@ const Sequelize = require('sequelize')
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
 const sequelize = new Sequelize(connectionString, {define: { timestamps: false }})
 
-const port = 8080
+// const port = 8080
 app.set('port', (process.env.PORT || 8080));
-app.listen(port, () => `Listening on port ${port}`)
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
+// app.listen(port, () => `Listening on port ${port}`)
 
 const House = sequelize.define('house', {
     title: Sequelize.STRING,

@@ -1,11 +1,11 @@
 const express = require('express')
-const cors = require('cors')
+// const cors = require('cors')
 const app = express()
 const Sequelize = require('sequelize')
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
 const sequelize = new Sequelize(connectionString, {define: { timestamps: false }})
 
-app.use(cors())
+// app.use(cors())
 
 // const port = 8080
 app.set('port', (process.env.PORT || 8080));
